@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class webcam : MonoBehaviour {
+public class Webcam : MonoBehaviour {
 
     // http://answers.unity3d.com/questions/909967/getting-a-web-cam-to-play-on-ui-texture-image.html
 
@@ -14,12 +14,12 @@ public class webcam : MonoBehaviour {
     {
         WebCamTexture webcamTexture = new WebCamTexture();
 
-        foreach (var webCamDevice in WebCamTexture.devices)
+        for (var i = 0; i < WebCamTexture.devices.Length; ++i)
         {
-            Debug.Log(webCamDevice.name);
-        }
+            Debug.Log(WebCamTexture.devices[i].name + " WebcamIndex:" + i);
+        } 
 
-         webcamTexture.deviceName = WebCamTexture.devices[WebcamIndex].name;
+        webcamTexture.deviceName = WebCamTexture.devices[WebcamIndex].name;
         rawimage.texture = webcamTexture;
         rawimage.material.mainTexture = webcamTexture;
         webcamTexture.Play();
